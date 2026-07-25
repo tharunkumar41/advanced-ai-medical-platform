@@ -1,0 +1,31 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environment
+.env
+
+# Database
+backend/medical_ai.db
+*.db
+*.sqlite3
+
+# Uploads
+backend/uploads/
+
+# Node
+frontend/node_modules/
+node_modules/
+
+# Build
+frontend/dist/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+tensorflow
+opencv-python
+pillow
+numpy
+matplotlib
+sqlalchemy
+python-multipart
+scikit-learn
+pandas
+python-dotenv
+google-generativeai
+google-genai
+openai
