@@ -236,7 +236,13 @@ http://localhost:5173
 ```
 
 ---
+## Environment Variables
 
+Create a `.env` file inside the backend directory.
+
+```env
+OPENROUTER_API_KEY=your_api_key
+```
 ## 📸 Screenshots
 
 ### Home Page
