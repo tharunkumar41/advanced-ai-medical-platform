@@ -1,8 +1,12 @@
 # 🏥 Advanced AI Medical Intelligence Platform
 
-An AI-powered web application for chest X-ray analysis that detects **Pneumonia** or **Normal** cases using **EfficientNetB0**, generates **Grad-CAM visualizations**, and provides an **AI-generated medical report** using **Google Gemini**.
+## 📖 Overview
 
----
+Advanced AI Medical Intelligence Platform is an end-to-end web application that leverages Deep Learning, Explainable AI (Grad-CAM), and Large Language Models (LLMs) to assist in chest X-ray analysis.
+
+The platform classifies chest X-ray images as **Normal** or **Pneumonia** using a fine-tuned EfficientNetB0 model, generates visual explanations through Grad-CAM, and produces AI-assisted clinical summaries using OpenRouter LLM.
+
+The application provides a complete workflow including image upload, prediction, explainability, AI-generated reports, and persistent prediction history through a modern React interface powered by a FastAPI backend.
 
 ## 🚀 Features
 
@@ -37,6 +41,39 @@ An AI-powered web application for chest X-ray analysis that detects **Pneumonia*
 - Grad-CAM
 
 ---
+
+## 🏗️ System Architecture
+
+```text
+                    +-----------------------+
+                    |      React + Vite     |
+                    |   Medical Web Portal  |
+                    +-----------+-----------+
+                                |
+                                |
+                        REST API (HTTP)
+                                |
+               +----------------+----------------+
+               |                                 |
+      +--------v---------+              +--------v---------+
+      |     FastAPI      |              |    SQLite DB     |
+      |  Backend Server  |              | Prediction Logs  |
+      +--------+---------+              +------------------+
+               |
+       +-------+--------+
+       |                |
++------v------+   +-----v------+
+| CNN Model   |   | OpenRouter |
+|EfficientNet |   | LLM Report |
++------+------+
+       |
++------v------+
+| Grad-CAM    |
+| Heatmap     |
++-------------+
+
+```
+
 
 ## 📂 Project Structure
 
@@ -199,24 +236,42 @@ http://localhost:5173
 ```
 
 ---
+## Environment Variables
 
+Create a `.env` file inside the backend directory.
+
+```env
+OPENROUTER_API_KEY=your_api_key
+```
 ## 📸 Screenshots
 
 ### Home Page
 
-> Add screenshot here
+<img width="1899" height="956" alt="image" src="https://github.com/user-attachments/assets/dedf5541-338e-406f-b5f1-c9debe02ad2d" />
+
+### Image Uploading
+
+<img width="1899" height="958" alt="image" src="https://github.com/user-attachments/assets/bb6c82d2-930e-4389-be30-1d5753fd23ef" />
 
 ### Prediction Result
 
-> Add screenshot here
+<img width="1211" height="645" alt="image" src="https://github.com/user-attachments/assets/9cfa4433-b41a-4237-b187-5ff657dd92e5" />
+
+### AI Medical Report
+
+<img width="1206" height="765" alt="image" src="https://github.com/user-attachments/assets/e97f9bb2-cf13-4ab2-9ac4-27f53bd5de3b" />
+
+<img width="1192" height="824" alt="image" src="https://github.com/user-attachments/assets/8e7299e2-cad5-4d7f-be42-835da655ea10" />
 
 ### Grad-CAM Visualization
 
-> Add screenshot here
+<img width="1202" height="490" alt="image" src="https://github.com/user-attachments/assets/137d20a4-aa6a-4d97-b139-547faed00033" />
+
 
 ### Prediction History
 
-> Add screenshot here
+<img width="1196" height="883" alt="image" src="https://github.com/user-attachments/assets/bdbbb055-22ca-4109-a474-d0ae28d55f1b" />
+
 
 ---
 
