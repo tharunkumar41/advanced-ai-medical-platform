@@ -7,7 +7,6 @@ Advanced AI Medical Intelligence Platform is an end-to-end web application that 
 The platform classifies chest X-ray images as **Normal** or **Pneumonia** using a fine-tuned EfficientNetB0 model, generates visual explanations through Grad-CAM, and produces AI-assisted clinical summaries using OpenRouter LLM.
 
 The application provides a complete workflow including image upload, prediction, explainability, AI-generated reports, and persistent prediction history through a modern React interface powered by a FastAPI backend.
----
 
 ## 🚀 Features
 
