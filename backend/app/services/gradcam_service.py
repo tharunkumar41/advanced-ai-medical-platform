@@ -11,6 +11,8 @@ MODEL_PATH = os.path.join(
     "models",
     "pneumonia_model.keras"
 )
+print("GRADCAM MODEL PATH:", MODEL_PATH)
+print("MODEL EXISTS:", os.path.exists(MODEL_PATH))
 
 model = tf.keras.models.load_model(MODEL_PATH)
 

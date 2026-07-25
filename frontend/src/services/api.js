@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://advanced-ai-medical-platform-1.onrender.com/"
+  baseURL: import.meta.env.VITE_API_URL
 });
 
 export default api;

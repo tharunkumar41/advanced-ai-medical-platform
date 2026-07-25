@@ -1,5 +1,5 @@
 import tensorflow as tf
-from tensorflow.keras import layers, models
+from tensorflow.keras import layers, model
 from tensorflow.keras.applications import EfficientNetB0
 
 
