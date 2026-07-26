@@ -19,7 +19,6 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
     ],
-    allow_origin_regex=r"advanced-ai-medical-platform.vercel.app",
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
