@@ -56,9 +56,13 @@ app = FastAPI(
 origins_env = os.getenv("CORS_ORIGINS", "http://localhost:5173")
 allow_origins = [origin.strip() for origin in origins_env.split(",")]
 
+import os
+from fastapi.middleware.cors import CORSMiddleware
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allow_origins,
+    allow_origins=["http://localhost:5173"],
+    allow_origin_regex=r"https://advanced-ai-medical-platform.*\.vercel\.app",
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
