@@ -1,87 +1,48 @@
-# import os
-# import cv2
-# import numpy as np
-# import tensorflow as tf
-
-# # Load model once
-# MODEL_PATH = os.path.join(
-#     os.path.dirname(__file__),
-#     "..",
-#     "..",
-#     "models",
-#     "pneumonia_model.keras"
-# )
-# print("GRADCAM MODEL PATH:", MODEL_PATH)
-# print("MODEL EXISTS:", os.path.exists(MODEL_PATH))
-
-# model = tf.keras.models.load_model(MODEL_PATH)
-
-# LAST_CONV_LAYER = "top_conv"
-
-
-# def generate_gradcam(image_path):
-#     # Read original image
-#     original = cv2.imread(image_path)
-#     original = cv2.cvtColor(original, cv2.COLOR_BGR2RGB)
-
-#     # Preprocess image
-#     img = cv2.resize(original, (224, 224))
-#     img = img.astype(np.float32)
-#     img = tf.keras.applications.efficientnet.preprocess_input(img)
-#     img = np.expand_dims(img, axis=0)
-
-#     # Grad-CAM model
-#     grad_model = tf.keras.models.Model(
-#         inputs=model.inputs,
-#         outputs=[
-#             model.get_layer(LAST_CONV_LAYER).output,
-#             model.output
-#         ]
-#     )
-
-#     with tf.GradientTape() as tape:
-#         conv_outputs, predictions = grad_model(img)
-
-#         # Binary classification
-#         loss = predictions[:, 0]
-
-#     grads = tape.gradient(loss, conv_outputs)
-
 import os
 import cv2
 import numpy as np
 import tensorflow as tf
 
+# Load model once
 MODEL_PATH = os.path.join(
-    os.path.dirname(__file__), "..", "..", "models", "pneumonia_model.keras"
+    os.path.dirname(__file__),
+    "..",
+    "..",
+    "models",
+    "pneumonia_model.keras"
 )
+print("GRADCAM MODEL PATH:", MODEL_PATH)
+print("MODEL EXISTS:", os.path.exists(MODEL_PATH))
 
 model = tf.keras.models.load_model(MODEL_PATH)
 
 LAST_CONV_LAYER = "top_conv"
 
-# ✅ built once at import time, reused for every request
-grad_model = tf.keras.models.Model(
-    inputs=model.inputs,
-    outputs=[
-        model.get_layer(LAST_CONV_LAYER).output,
-        model.output
-    ]
-)
-
 
 def generate_gradcam(image_path):
+    # Read original image
     original = cv2.imread(image_path)
     original = cv2.cvtColor(original, cv2.COLOR_BGR2RGB)
 
+    # Preprocess image
     img = cv2.resize(original, (224, 224))
     img = img.astype(np.float32)
     img = tf.keras.applications.efficientnet.preprocess_input(img)
     img = np.expand_dims(img, axis=0)
 
-    # grad_model is no longer constructed here — just used
+    # Grad-CAM model
+    grad_model = tf.keras.models.Model(
+        inputs=model.inputs,
+        outputs=[
+            model.get_layer(LAST_CONV_LAYER).output,
+            model.output
+        ]
+    )
+
     with tf.GradientTape() as tape:
         conv_outputs, predictions = grad_model(img)
+
+        # Binary classification
         loss = predictions[:, 0]
 
     grads = tape.gradient(loss, conv_outputs)

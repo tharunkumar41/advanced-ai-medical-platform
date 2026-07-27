@@ -1,0 +1,22 @@
+MODEL PERFORMANCE METRICS
+==================================================
+Test samples : 624
+Accuracy     : 0.8574
+Precision    : 0.8413
+Recall       : 0.9513
+F1 Score     : 0.8929
+ROC-AUC      : 0.9422
+
+Confusion Matrix:
+[[164  70]
+ [ 19 371]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+      NORMAL       0.90      0.70      0.79       234
+   PNEUMONIA       0.84      0.95      0.89       390
+
+    accuracy                           0.86       624
+   macro avg       0.87      0.83      0.84       624
+weighted avg       0.86      0.86      0.85       624
