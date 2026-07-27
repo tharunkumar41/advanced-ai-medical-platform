@@ -34,6 +34,7 @@ function PredictionCard({ result }) {
   if (!result) return null;
 
   const isNormal = result.prediction.toLowerCase().includes("normal");
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
   return (
     <div className="card prediction-card">
@@ -85,25 +86,20 @@ function PredictionCard({ result }) {
           <p>Analysis Complete</p>
         </div>
       </div>
-
+      
       <div className="image-section">
         <div className="image-card">
           <h3>🖼 Original X-ray</h3>
+          
 
-          <img
-            src={`http://localhost:8000/uploads/${result.filename}`}
-            alt="Original"
-          />
+          <img src={`${API_URL}/uploads/${result.filename}`} alt="Original" />
         </div>
 
         {result.gradcam_image && (
           <div className="image-card">
             <h3>🔥 Grad-CAM</h3>
 
-            <img
-              src={`http://localhost:8000${result.gradcam_image}`}
-              alt="GradCAM"
-            />
+            <img src={`${API_URL}${result.gradcam_image}`} alt="GradCAM" />
           </div>
         )}
       </div>
