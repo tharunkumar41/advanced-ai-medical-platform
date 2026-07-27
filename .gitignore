@@ -6,7 +6,8 @@ __pycache__/
 *.pyd
 
 # Environment
-.env
+forntend/.env
+backend/.env
 
 # Database
 backend/medical_ai.db
